@@ -29,7 +29,7 @@ Define an abstract class with a skeleton of the algorithm in which the type of o
 
 &nbsp;&nbsp;&nbsp;&nbsp;***Provides hooks for subclasses***. Using a factory method to create objects within a class adds flexibility compared to direct object creation. Factory Method provides subclasses with a way to customize and extend the creation process of an object.
 
-> [!TIP]
+> [!NOTE]
 > The behaviour can be changed dynamically by changing the reference to an object of a different *Concrete* class
 
 &nbsp;&nbsp;&nbsp;&nbsp;***Connects parallel class hierarchies***. Factory methods are commonly used by *Creators*, but clients can also benefit from them, particularly in situations involving parallel class hierarchies. Parallel hierarchies arise when a class delegates some tasks to another class.
