@@ -54,7 +54,7 @@ Define an object creation interface and let each subclass create one family obje
 ## UML
 
 <div style="text-align:center">
-  <img src="./diagram/AbstractFactory.png"  alt="UML Diagram of Abstract Factory"/>
+  <img src="diagrams/AbstractFactory.png"  alt="UML Diagram of Abstract Factory"/>
 </div>
 
 ## Code Example
