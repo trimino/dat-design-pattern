@@ -212,12 +212,12 @@ class CoffeeFactory extends BeverageFactory {
 
 ### Creating the Products
 
-*AbstractFactory* only declares an interface for creating products. It's up to *ConcreteProduct* subclasses to actually create them. The most common way to do this is to define a factory method for each product. A concrete factory will specify its products by overridding the factory method for each. This method was implemented in the [coding example](#code-example).
+&nbsp;&nbsp;&nbsp;&nbsp;*AbstractFactory* only declares an interface for creating products. It's up to *ConcreteProduct* subclasses to actually create them. The most common way to do this is to define a factory method for each product. A concrete factory will specify its products by overridding the factory method for each. This method was implemented in the [coding example](#code-example).
 
 > [!CAUTION]
 > This is a simple implementation, but requires a concrete factoy subclass for each product family (even if the products differ slightly)
 
-Using the Prototype Pattern on the *ConcreteFactory* when having many product fmailies will reduce the number of *ConcreteFactory* subclasses.
+&nbsp;&nbsp;&nbsp;&nbsp;Using the Prototype Pattern on the *ConcreteFactory* when having many product fmailies will reduce the number of *ConcreteFactory* subclasses.
 
 > [!NOTE]
 > The Prototype-based approach eliminates the need for a new concrete factory subclass for each product family
