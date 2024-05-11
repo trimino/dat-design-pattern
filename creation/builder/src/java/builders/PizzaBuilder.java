@@ -8,7 +8,7 @@ import java.util.List;
 public class PizzaBuilder implements Builder {
     private String size;
     private String crustType;
-    private final List<String> toppings;
+    private List<String> toppings;
 
     public PizzaBuilder() {
         this.toppings = new ArrayList<>();
@@ -33,6 +33,8 @@ public class PizzaBuilder implements Builder {
     }
 
     public Pizza build() {
-        return new Pizza(this.size, this.crustType, this.toppings);
+        Pizza pizza = new Pizza(this.size, this.crustType, this.toppings);
+        this.toppings = new ArrayList<>();
+        return pizza;
     }
 }

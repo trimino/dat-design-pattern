@@ -16,9 +16,9 @@ public class Sandwich {
 
     @Override
     public String toString() {
-        return "Sandwich { "+
+        return "Sandwich: "+
                 "size = " + size + ", " +
                 "breadType = " + breadType + ", " +
-                "toppings = " + sauces + "}\n";
+                "toppings = " + sauces + "\n";
     }
 }

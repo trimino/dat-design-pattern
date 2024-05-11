@@ -13,13 +13,13 @@ public class Director {
     }
 
     public void buildItalianPizza(Builder builder) {
-        builder.setSize("Large")
+        builder.setSize("Small")
                 .setType("Thick")
-                .addTopping("Sausage");
+                .addTopping("Italian Sausage");
     }
 
     public void buildVeggieSandwich(Builder builder) {
-        builder.setSize("Large")
+        builder.setSize("Foot-long")
                 .setType("Gluten Free")
                 .addTopping("Avocado")
                 .addTopping("Black Beans");

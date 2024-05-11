@@ -16,9 +16,9 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza { " +
+        return "Pizza: " +
                 "size= " + size + ", " +
                 "crustType= " + crustType + ", " +
-                "toppings= " + toppings + "}\n";
+                "toppings= " + toppings + "\n";
     }
 }

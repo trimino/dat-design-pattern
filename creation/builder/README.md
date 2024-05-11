@@ -135,7 +135,9 @@ class PizzaBuilder implements Builder {
     }
 
     public Pizza build() {
-        return new Pizza(this.size, this.crustType, this.toppings);
+        Pizza pizza = new Pizza(this.size, this.crustType, this.toppings);
+        this.toppings = new ArrayList<>();
+        return pizza;
     }
 }
 
@@ -168,7 +170,9 @@ class SandwichBuilder implements Builder {
     }
     
     public Sandwich build() {
-        return new Sandwich(this.size, this.breadType, this.toppings);
+        Sandwich sandwich = new Sandwich(this.size, this.breadType, this.toppings);
+        this.toppings = new ArrayList<>();
+        return sandwich;
     }
 }
 ```
@@ -225,6 +229,77 @@ public class Main {
 ### Assembly and Construction Interface
 
 &nbsp;&nbsp;&nbsp;&nbsp;Builders use a step-by-step approach to create their products. So, the Builder class interface needs to be flexible enough to work with different kinds of builders. One important consideration is how the construction and assembly process should work. One way is to just add each new part to the product as it's built. However, sometimes you might need to access parts of the product that were built earlier, especially in cases like building tree structures. In those situations, the builder might return child nodes to the director, which then sends them back to the builder to build the parent nodes.
+
+```java
+// Product: Represents a node in a tree structure 
+class TreeNode {
+    private String data;
+    private List<TreeNode> children;
+    
+    public TreeNode(String data) {
+        this.data = data;
+        this.children = new ArrayList<>();
+    }
+    
+    public void addChild(TreeNode child) {
+        children.add(child);
+    }
+  
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(data);
+        if (!children.isEmpty()) {
+            sb.append(" [");
+            for (TreeNode child : children) {
+                sb.append(child.toString());
+                sb.append(", ");
+            }
+            sb.delete(sb.length() - 2, sb.length());
+            sb.append("]");
+        }
+        return sb.toString();
+    }
+}
+
+// Builder Interface
+interface TreeBuilder {
+    TreeNode buildNode(String data);
+}
+
+// Concrete Builder: TreeBuilder
+class TreeNodeBuilder implements TreeBuilder {
+    @Override
+    public TreeNode buildNode(String data) {
+        return new TreeNode(data);
+    }
+}
+
+// Director: Constructs the tree structure
+class TreeDirector {
+    private TreeBuiler builder;
+    
+    public TreeDirector(TreeBuilder treeBuilder) {
+        this.builder = treeBuilder;
+    }
+    
+    public TreeNode constructTree() {
+        TreeNode root = builder.buildNode("Root");
+        TreeNode child1 = builder.buildNode("Child 1");
+        TreeNode child2 = builder.buildNode("Child 2");
+        
+        root.addChild(child1);
+        root.addChild(child2);
+        
+        TreeNode grandchild1 = builder.buildNode("Grandchild 1");
+        TreeNode grandchild2 = builder.buildNode("Grandchild 2");
+        
+        child1.addChild(grandchild1);
+        child1.addChild(grandchild2);
+        return root;
+    }
+}
+```
 
 ### Empty Methods as Default In BUILDER Interface 
 

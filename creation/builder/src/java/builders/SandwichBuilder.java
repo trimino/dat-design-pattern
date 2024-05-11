@@ -8,7 +8,7 @@ import java.util.List;
 public class SandwichBuilder implements Builder {
     private String size;
     private String breadType;
-    private final List<String> sauces;
+    private List<String> sauces;
 
     public SandwichBuilder() {
         this.sauces = new ArrayList<>();
@@ -33,6 +33,8 @@ public class SandwichBuilder implements Builder {
     }
 
     public Sandwich build() {
-        return new Sandwich(this.size, this.breadType, this.sauces);
+        Sandwich sandwich = new Sandwich(this.size, this.breadType, this.sauces);
+        this.sauces = new ArrayList<>();
+        return sandwich;
     }
 }
