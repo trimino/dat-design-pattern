@@ -388,3 +388,11 @@ public class Stock implements ProductCloneInterface {
     }
 } 
 ```
+
+## Related Patterns
+
+* *Prototype* has many of the same benefits and liabilities that *Abstract Factory* and *Builder* have: it hides the concrete product classes from the client, thereby **reducing the number of names clients know about**. Moreover, these patterns let a client work with application-specific classes without modification.
+
+* *Flyweight* reduces the number of instances of a class, while *Prototype* reduces the number of classes. They can be used together to conquer both objectives.
+
+* *Abstract Factory* may use *Prototype* to create products.
