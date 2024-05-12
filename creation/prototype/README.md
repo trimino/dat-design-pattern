@@ -302,3 +302,89 @@ public class Main {
   }
 }
 ```
+
+## Implementation Notes
+
+### Using a Prototype Manager/Registry
+
+&nbsp;&nbsp;&nbsp;&nbsp;When your system has changing prototypes, instead of handling them individually, you can use a *Prototype Manager*. This manager keeps track of all available prototypes. WHen a client needs a prototype, it asks the manager for it before making a copy.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A prototype manager is like a storage system where you can find prototypes based on a key. You can add or remove prototypes from this storage. Client's can interact with this storage during runtime, which helps them expand and check what's available in the system without needing to write extra code.
+
+```java
+// Prototype Manager: PrototypeManger
+class PrototypeManager {
+    private Map<String, Beverage> beverageMap = new HashMap<>();
+    private Map<String, Topping> toppingMap = new HashMap<>();
+    
+    public void registerBeverage(String key, Beverage beverage) {
+        beverageMap.put(key, beverage);
+    }
+    
+    public void registerTopping(String key, Topping topping) {
+        toppingMap.put(key, topping);
+    }
+    
+    public Beverage getBeverageClone(String key) {
+        if (beverageMap.containsKey(key))
+            return beverageMap.get(key);
+        else 
+            return null;
+    }
+    
+    public Topping getToppingClone(String key) {
+        if (toppingMap.containsKey(key))
+            return toppingMap.get(key);
+        else
+            return null;
+    }
+    
+}
+```
+
+### Implementing the "clone" method
+
+&nbsp;&nbsp;&nbsp;&nbsp;The hardest part of the Prototype pattern is implementing the Clone operation correctly. It's particular tricky when object structures contain circular references.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Most languages provide some support for cloning objects. C++ provides a copy constructor, but these do not solve the "shallow copy" vs "deep copy" problem. That is, does cloning an object in turn clone its instance variables, or do the clone and original just share the variables?
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;A shallow copy is straightforward and usually works fine. In C++, the default copy constructor copies member variables directly, so if you have pointers, they will be shared between the original and the copy. However, when you're cloning prototypes with complex structures, you often need a deep copy. This means the clone and the original must be completely separate. So, you need to make sure that everything inside the clone is also cloned from the original. Cloning makes you decide what, if anything, should be shared.
+
+```java
+public class Investment implements ProductCloneInterface {
+    String symbol;
+    int quantity;
+    
+    public Investment(String symbol, int quantity) {
+        this.symbol = symbol;
+        this.quantity = quantity;
+    }
+    
+    @Override
+    public ProductCloneInterface cloneInvestment() {
+        return new Investment(this.symbol, this.quantity);
+    }
+}
+
+public class Stock implements ProductCloneInterface {
+    String name;
+    Investment investment;
+    
+    public Stock(String name, Investment investment) {
+        this.name = name;
+        this.investment = investment;
+    }
+    
+    @Override
+    public ProductCloneInterface cloneShallowCopyProduct() {
+        // the new instance of Stock and this instance of stock share the same pointer for Investment
+        return new Stock(this.name, this.investment);
+    }
+    
+    @Override
+    public ProductCloneInterface cloneDeepCopyProduct() {
+        return new Stock(this.name, new Investment(this.investment.cloneInvestment()));
+    }
+} 
+```
