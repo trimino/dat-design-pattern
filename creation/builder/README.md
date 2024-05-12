@@ -1,3 +1,5 @@
+# Builder Pattern
+
 ## Introduction
 **Builder Pattern** separates the construction of a complex object from its representation so that the same construction process can create different representations.
 
@@ -47,7 +49,7 @@ Decouple the construction processes and the construction steps into two separate
 ### Class Diagram
 
 <div style="text-align:center">
-  <img src="diagrams/Builder.png"  alt="Sequence Diagram for Builder Pattern"/>
+  <img src="diagrams/Builder.png"  alt="Class Diagram for Builder Pattern"/>
 </div>
 
 ## Code Example
