@@ -93,8 +93,6 @@ Use Object Adapter if:
 
 ## Code Example
 
-**Scenario**: You have a legacy LegacyShape class (representing a 2D shape) with a getArea() method returning a double. You want to integrate it with a new graphics library that expects shapes to implement a Shape interface with a getArea() method returning an int.
-
 **Scenario**: Currently we have a logging system that can log two data representation types: JSON and YAML. We are currently working with an API that returns XML data to us. We want this XML formatted data to be able to work with our JSON and YAML systems.
 
 ### Class Adapter Code Example
