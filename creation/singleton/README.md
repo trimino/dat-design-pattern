@@ -10,46 +10,42 @@ How to create at most one, or a limited number of globally accessible instances 
 Hide the constructor of a class, and define a static operation that returns the sole instance of a class.
 
 ## Applicability
-* There must be exactly one instance of a class, and it must be accessible to clients from a well known access point
 
+### When to Use the Singleton Pattern
 
-* When the sole instance should be extensible by subclassing, and clients should be able to use an extended instance without modifying their code
+* **Single Instance Requirement**
+  * Ensure only one instance of a class exists and is accessible from a known access point.
 
+* **Extensible Singleton**
+  * Allow the singleton to be subclassed, letting clients use the extended instance without changing their code.\
 
 ## Benefits
-&nbsp;&nbsp;&nbsp;&nbsp;***Controlled access to sole instance***. Because the *ThreadSafeSingleton* class encapsulates its sole instance, it can have strict control over how and when clients access it.
 
+* ***Controlled Access***
+  * Strictly manages how and when clients access the sole instances.
 
-&nbsp;&nbsp;&nbsp;&nbsp;***Reduced name space***. The *ThreadSafeSingleton* pattern is an improvement over global variables. It avoids polluting the name space with global variables that store sole instances.
+* ***Reduced Namespace Clutter***
+  * Avoids global variables, keeping the namespace clean.
 
+* ***Operation and Representation Refinement***
+  * Allows subclassing, making it easy to use an extended instance at runtime.
 
-&nbsp;&nbsp;&nbsp;&nbsp;***Permits refinement of operations and representation***. The *ThreadSafeSingleton* class may be subclassed, and it's easy to configure an application with an instance of this extended class. You can configure the application with an instance of the class you need at run-time.
+* ***Variable Number of Instances***
+  * Easily changeable to allow more than one instance if needed.
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;***Permits a variable number of instances***. The pattern makes it easy to change your mind and allow more than one instance of the *ThreadSafeSingleton* class. Moreover, you can use the same approach to control the number of instances that the application uses. Only the operation that grants access to the *ThreadSafeSingleton* instance needs change.
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;***More flexible than class operations***. Another way to package a threadSafeSingleton's functionality is to use class operations (static member functions). Static member functions cannot be overwritten, so subclasses can't override them polymorphically.
-
+* ***Flexibility Over Class Operations***
+  * Provides more flexibility than static methods, as they can't be overridden in subclasses.
 
 ## Liabilities
 
-Singletons create a tight coupling between different parts of your code that rely on the threadSafeSingleton instance. This can make unit testing and code maintainability more difficult.
+* ***Controlled Access***
+  * Strict control over access can introduce complexity.
 
-> [!CAUTION]
-> Tight coupling
+* ***Variable Number of Instances***
+  * Allowing multiple instances can complicate the design and usage.
 
-
-Unit testing code that relies on singletons can be challenging. Mocking or stubbing the threadSafeSingleton instance can add complexity to your tests.
-
-> [!CAUTION]
-> Testability issues
-
-
-Singletons often become a central point for storing global state. This can make debugging issues harder as changes to the threadSafeSingleton can have widespread effects.
-
-> [!CAUTION]
-> Global state management issues
+* ***Flexibility Over Class Operations***
+  * The flexibility might lead to misuse or over complication.
 
 ## Code Example
 
