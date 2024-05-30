@@ -17,7 +17,7 @@ Hide the constructor of a class, and define a static operation that returns the 
   * Ensure only one instance of a class exists and is accessible from a known access point.
 
 * **Extensible Singleton**
-  * Allow the singleton to be subclassed, letting clients use the extended instance without changing their code.\
+  * Allow the singleton to be subclassed, letting clients use the extended instance without changing their code.
 
 ## Benefits
 
