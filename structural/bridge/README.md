@@ -15,38 +15,44 @@ Decouple the implementation from the client interface, so they change independen
 ## Applicability 
 
 * ***Runtime Implementation Selection***
-  * You need to allow selecting or switching an implementation at runtime, avoiding a fixed link between an abstraction and its implementation
+  * You need to allow selecting or switching an implementation at runtime, avoiding a fixed link between an abstraction and its implementation.
 
 * ***Independent Extensibility***
-  * Both abstractions and implementations should be easily extendable. The bride pattern helps you combine and extend them independently 
+  * Both abstractions and implementations should be easily extendable. The bride pattern helps you combine and extend them independently.
 
 * ***Client Code Stability***
-  * Implementation changes should not affect client code, ensuring no need for recompilation
+  * Implementation changes should not affect client code, ensuring no need for recompilation.
 
 * ***Implementation Encapsulation***
-  * You want to completely hide an abstraction's implementation details from clients, especially important languages like C++
+  * You want to completely hide an abstraction's implementation details from clients, especially important languages like C++.
 
 * ***Simplifying Complex Hierarchies***
-  * A large number of classes indicate the need to separate an object into two parts, simplifying complex hierarchies
+  * A large number of classes indicate the need to separate an object into two parts, simplifying complex hierarchies.
 
 * ***Shared Implementation Management***
-  * You need to share an implementation among multiple objects, hiding this detail from the client. An example is a logging framework where multiple logger instances share the same logging backend
+  * You need to share an implementation among multiple objects, hiding this detail from the client. An example is a logging framework where multiple logger instances share the same logging backend.
 
 ## Benefits
 
-* **Decoupling Interface and Implementation**: The implementation is not permanently bound to an interface, allowing runtime configuration or changes
+* ***Decoupling Interface and Implementation***
+  * The implementation is not permanently bound to an interface, allowing runtime configuration or changes.
 
-* **Reduced Compile-Time Dependencies**: Changing an implementation class doesn't require recompiling the abstraction class and its clients, ensuring binary compatibility across different versions of a class library
+* ***Reduced Compile-Time Dependencies***
+  * Changing an implementation class doesn't require recompiling the abstraction class and its clients, ensuring binary compatibility across different versions of a class library.
 
-* **Layered Architecture**: Encourages better system structure, as high-level components only need to know about the abstraction and implementor, not their specific implementations
+* ***Layered Architecture***
+  * Encourages better system structure, as high-level components only need to know about the abstraction and implementor, not their specific implementations.
 
-* **Improved Extensibility**: The abstraction and implementor hierarchies can be extended independently, allowing more flexible and modular code development
+* ***Improved Extensibility***
+  * The abstraction and implementor hierarchies can be extended independently, allowing more flexible and modular code development.
 
-* **Hiding Implementation Details**: Clients are shielded from implementation specifics, such as object sharing and reference counting mechanisms
+* ***Hiding Implementation Details***
+  * Clients are shielded from implementation specifics, such as object sharing and reference counting mechanisms.
 
 ## Liabilities
 
-* **Increased Complexity**: Introducing the bridge pattern adds extra layers of abstraction, which can complicate the codebase and make it harder to understand for new developers
+* **Increased Complexity**
+  * Introducing the bridge pattern adds extra layers of abstraction, which can complicate the codebase and make it harder to understand for new developers.
 
 ## UML
 
@@ -59,6 +65,8 @@ Decouple the implementation from the client interface, so they change independen
 ![Class Diagram for Bridge](diagrams/BridgeClassDiagram.png)
 
 ## Code Example
+
+**Scenario**: You want to access two different database implementations at runtime. One set of data requires you to query mysql and other set is in PostgresSQL. You also do not want to change the client code when you have made changes to either implementation.
 
 ```java
 // Implementation Interface
@@ -295,6 +303,8 @@ In C++ you can use multiple inheritance to combine an interface with its impleme
 
 ## Related Patterns
 
-* **Abstract Factory**: Can be used to create and configure a specific bridge.
+* **Abstract Factory**
+  * Can be used to create and configure a specific bridge.
 
-* **Adapter vs. Bridge**: The Adapter pattern makes unrelated classes work together, typically applied after system design. In contrast, the Bridge pattern is used early in the design process to allow independent variation of abstractions and implementations.
+* **Adapter vs. Bridge**
+  * The Adapter pattern makes unrelated classes work together, typically applied after system design. In contrast, the Bridge pattern is used early in the design process to allow independent variation of abstractions and implementations.
