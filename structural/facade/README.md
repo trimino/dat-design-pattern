@@ -33,7 +33,7 @@ Define a class in-between the client and the components. The class interacts wit
 
 * **Promotes Weak Coupling**
     * Reduces strong coupling between subsystems and clients, allowing subsystem components to change without affecting clients
-    * Helps organize layers and dependencies in the system, eliminating complex or circular dependencies\
+    * Helps organize layers and dependencies in the system, eliminating complex or circular dependencies
   
 * ***Reduces Compilation Dependencies***
   * Minimizes recompilation needs when subsystems classes change, saving time in large software systems
@@ -221,12 +221,11 @@ In modern languages, namespaces (like those in C++ or packages in Java) help man
 ## Related Patterns
 
 * **Abstract Factory**
-    * Can be used with Facade to provide an interface for creating subsystem objects in a subsystem-independent way
-    * Can also be used as an alternative to Facade to hide platform-specific classes
+    * Can be used with Facade to provide an interface for creating subsystem objects in a subsystem-independent way.
+    * Can also be used as an alternative to Facade to hide platform-specific classes.
 
 * **Mediator**
-    * The Mediator pattern, like the Facade pattern, abstracts functionality of existing classes. However, Mediator centralizes communication between colleague objects, with colleagues communicating through the mediator instead of directly with each other.
-    * In contrast, a Facade abstracts the interface to make subsystem objects easier to use without adding new functionality, and subsystem classes remain unaware of it.
+    * The Mediator pattern, like the Facade pattern, abstracts functionality of existing classes. However, Mediator centralizes communication between colleague objects, with colleagues communicating through the mediator instead of directly with each other. In contrast, a Facade abstracts the interface to make subsystem objects easier to use without adding new functionality, and subsystem classes remain unaware of it.
     * ***Facade simplifies the interface for the client while the mediator simplifies the interaction between the components the mediator mediates.***
 
 * **Singleton**
@@ -236,4 +235,4 @@ In modern languages, namespaces (like those in C++ or packages in Java) help man
     * In a sense, both Proxy and Decorator add functionality to existing objects. However, proxy adds the functionality permanently while with decorator the functionality can be added and removed at will.
 
 * **Visitor**
-    * Both Decorator and Visitor add functionality to existing classes. However, in the Visitor the added functionality is typed-dependent
+    * Both Decorator and Visitor add functionality to existing classes. However, in the Visitor the added functionality is typed-dependent.
