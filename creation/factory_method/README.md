@@ -14,32 +14,30 @@ Define an abstract class with a skeleton of the algorithm in which the type of o
 
 ## Applicability
 
-* When a class doesn't know in advance what subclass it will need to create
+* ***Uncertain Object Types***
+  * When a class doesn't know in advance which exact class it will need to instantiate.
 
-* A class wants its subclasses to decide which specific objects to create
+* ***Subclass Decision-Making***
+  * When a class wants its subclasses to determine which objects to create.
 
-* When you want to delegate the responsibility of object creation to helper subclasses, allowing for flexible and localized decision-making
+* ***Delegating Creation***
+  * When a class hands off the responsibility of creating objects to helper subclasses, and you want to keep this decision-making localized.
 
 ## Benefits
 
-&nbsp;&nbsp;&nbsp;&nbsp;Factory methods eliminate the need to bind application-specific classes into your code. The code only deals with the *Product* interface; therefore it can work any user-defined *ConcreteProduct* classes. 
+* ***Flexibility in Object Creation***
+  * Creating objects with a factory method is more flexible than direct instantiation.
+  * Subclasses can easily extend and customize the object creation process.
 
-> [!NOTE]
-> Requires less effort to add concrete subclasses because duplicate code is eliminated
-
-&nbsp;&nbsp;&nbsp;&nbsp;***Provides hooks for subclasses***. Using a factory method to create objects within a class adds flexibility compared to direct object creation. Factory Method provides subclasses with a way to customize and extend the creation process of an object.
-
-> [!NOTE]
-> The behaviour can be changed dynamically by changing the reference to an object of a different *Concrete* class
-
-&nbsp;&nbsp;&nbsp;&nbsp;***Connects parallel class hierarchies***. Factory methods are commonly used by *Creators*, but clients can also benefit from them, particularly in situations involving parallel class hierarchies. Parallel hierarchies arise when a class delegates some tasks to another class.
+* ***Utility for Clients***
+  * Factory methods are primarily used by `Creators`, but clients can also benefit from them.
+  * Particularly useful in parallel class hierarchies, where a class delegates some responsibilities to another class.
 
 ## Liabilities
 
-&nbsp;&nbsp;&nbsp;&nbsp;The Factory Method can be problematic because clients might need to create a subclass of the *Creator* class just to make a specific *ConcreteProduct* object. This extra subclassing adds complexity, especially if the client doesn't need to subclass *Creator* for other reasons, creating more challenges in managing the code's evolution.
-
-> [!CAUTION]
-> A few more classes to implement
+* ***Subclassing Requirement***
+  * Clients might need to subclass the `Creator` just to create specific `ConcreteProduct` objects.
+  * This adds complexity if subclassing `Creator` isn't necessary for other reasons, introducing another point of evolution.
 
 # UML
 
