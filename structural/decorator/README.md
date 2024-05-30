@@ -264,21 +264,21 @@ Ensure components and decorators share a common, lightweight `Component` class f
 
 ### Changing the Skin of an Object Versus Changing its Guts
 
-The Decorator pattern adds a "skin" to an object, changing its behavior externally. In contrast, the Strategy pattern changes the object's "guts" by delegating some behavior to a separate strategy object. Use the Strategy pattern when the Component class is too heavy for decorators. This approach allows altering or extending functionality by swapping strategy objects. Decorators are transparent to the component, while strategies require the component to manage and reference them. Strategies can have specialized interfaces, whereas decorators must match the component's interface.
+The Decorator pattern adds a "skin" to an object, changing its behavior externally. In contrast, the Strategy pattern changes the object's "guts" by delegating some behavior to a separate strategy object. Use the Strategy pattern when the `Component` class is too heavy for decorators. This approach allows altering or extending functionality by swapping strategy objects. Decorators are transparent to the component, while strategies require the component to manage and reference them. Strategies can have specialized interfaces, whereas decorators must match the component's interface.
 
 ## Related Patterns
 
 * **Adapter**
-  * A decorator is different from an `Adapter` in that a `Decorator` only changes an object's responsibilities, not its interface; an `Adapter` will give you an object a completely new interface
+  * A decorator is different from an `Adapter` in that a `Decorator` only changes an object's responsibilities, not its interface; an `Adapter` will give you an object a completely new interface.
 
 * **Composite**
-  * A decorator can be viewed as a degenerate `Composite` with only one component. However, a `Decorator` adds additional responsibilities, it isn't intended for object aggregation
+  * A decorator can be viewed as a degenerate `Composite` with only one component. However, a `Decorator` adds additional responsibilities, it isn't intended for object aggregation.
 
 * **Strategy**
-  * A `Decorator` lets you change the skin of an object; a strategy lets you change the guts. These are two alternative ways of changing an object
+  * A `Decorator` lets you change the skin of an object; a strategy lets you change the guts. These are two alternative ways of changing an object.
 
 * **Proxy**
   * In a sense, both Proxy and Decorator add functionality to existing objects. However, proxy adds the functionality permanently while with decorator the functionality can be added and removed at will.
 
 * **Visitor**
-  * Both Decorator and Visitor add functionality to existing classes. However, in the Visitor the added functionality is typed-dependent
+  * Both Decorator and Visitor add functionality to existing classes. However, in the Visitor the added functionality is typed-dependent.
