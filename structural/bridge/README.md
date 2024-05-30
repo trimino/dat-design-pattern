@@ -166,7 +166,7 @@ public class Main {
 If there's only **one implementation**, you don't need an abstract *Implementor/Implementation Interface* class. This still separates the abstraction from the implementation, so changes in implementation don't affect clients.
 
 ```java
-public class SingleDatabase implements Database {
+public class SingleDatabase {
     public void connect() {
         System.out.println("Connecting the single database...");
     }
