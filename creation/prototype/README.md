@@ -14,52 +14,41 @@ Define a class to replace all the classes that share similar behaviour and relat
 Use the prototype pattern when you want:
 
 * ***Independence***
-   * You want a system where *how products are created and used* is flexible
+   * You want a system where *how products are created and used* is flexible.
 
 * ***Dynamic Loading***
-    * You need classes to be chosen and loaded during runtime
+    * You need classes to be chosen and loaded during runtime.
 
 * ***Hierarchy Avoidance***
-  * You want to avoid creating a hierarchy of factories for every product
+  * You want to avoid creating a hierarchy of factories for every product.
 
 * ***State Variation***
-  * Instances of a class can have only a few different states, making it easier to clone prototypes than creating them manually
+  * Instances of a class can have only a few different states, making it easier to clone prototypes than creating them manually.
 
-&nbsp;&nbsp;&nbsp;&nbsp;In essence the *Prototype Pattern* helps create flexible systems where you can easily create and modify objects without tightly coupling them to their creation process or specific class.
+In essence the Prototype Pattern helps create flexible systems where you can easily create and modify objects without tightly coupling them to their creation process or specific class.
 
 ## Benefits
 
-&nbsp;&nbsp;&nbsp;&nbsp;With *prototypes,* you can easily add or remove new product types while your programming is running. Instead of rigidly defining each product class, you can register a prototype with the client. This flexibility sets *prototypes* apart from other methods because you can adjust your product lineup dynamically, even while the program is running.
+* ***Adding and Removing Products at Runtime***
+  * You can easily add new product classes by registering a prototype instance.
+  * Clients can install and remove prototypes dynamically, offering more flexibility than other creational patterns.
 
-> [!NOTE]
-> Easy to add and remove products at runtime.
+* ***Specifying New Objects by Varying Values***
+  * Define new behavior by changing object variables without creating new classes.
+  * Register instances as prototypes to create new object types.
+  * Users can define new *"classes"* without coding, reducing the number of classes needed.
+  * Cloning a prototype is similar to creating a new class instance, simplifying the process.
 
-&nbsp;&nbsp;&nbsp;&nbsp;In very flexible systems, you can create new behaviors by combining objects and settings their values, rather than making entirely new classes. Instead of defining whole new types of objects, you can create them by tweaking existing ones and marking them as prototypes. This way, a client can borrow behaviors from these prototypes and adapt them as needed. Equivalent to building new things with LEGO blocks rather than designing entirely new toys from scratch.
-
-> [!NOTE]
-> Creating new objects by changing values
-
-&nbsp;&nbsp;&nbsp;&nbsp;With this design, users can make new classes without needing to code. Essentially, cloning a *prototype* is like making a new instance of a class. Using the *Prototype Pattern* can significantly cut down the total number of classes your system requires. Equivalent to having a library of LEGO instructions where you can make new models by following existing designs.
-
-> [!TIP]
-> Improves efficiency of complex object creation because cloning may be more efficient than constructing the object
-
-&nbsp;&nbsp;&nbsp;&nbsp;*Factory Method* often produces a hierarchy of *Creation* classes that parallels the product class hierarchy. The *Prototype* pattern lets you clone a prototype instead of asking a factory method to make a new object.
-
-> [!NOTE]
-> Reduces the number of classes
-
-&nbsp;&nbsp;&nbsp;&nbsp;In certain environments, you can add classes to an application while it's running. These classes are automatically instantiated when loaded and managed by a *prototype manager/registry*. The application can the request instances of these dynamically added classes from the manager, even if they weren't part of the original program. Equivalent to adding new tools to your toolbox while you're working and being able to use them right away.
-
-> [!NOTE]
-> Supports dynamically loaded classes (DLC), which cannot be referenced at compile time
-
+* ***Configuring an Application with Classes Dynamically***
+  * Dynamically load classes at runtime without referencing their constructors.
+  * The runtime environment automatically creates and registers class instances with a prototype manager.
+  * Applications can request instances of newly loaded classes from the prototype manager, even if they weren't originally linked with the program.
 
 ## Liabilities
-&nbsp;&nbsp;&nbsp;&nbsp;The main issue with the Prototype pattern is that every subclass of Prototype needs to implement the clone() operation, which can be tricky. For instance, it's challenging when internal objects don't support copying or have circular references.
 
-> [!CAUTION]
-> Implementing clone can be difficult with circular dependencies or nested objects without copy method
+* ***Implementation Complexity***
+  * Each subclass must implement the `clone()` method, which can be challenging.
+  * Cloning can be difficult if objects have internal structures that don't support copying or have circular references.
 
 ### Sequence Diagram
 
@@ -77,9 +66,7 @@ Use the prototype pattern when you want:
 
 ### Scenario 
 
-&nbsp;&nbsp;&nbsp;&nbsp;In my opinion this is a common scenario in order to make sense of *Prototype*. Here is the scenario:
-
-&nbsp;&nbsp;&nbsp;&nbsp;Let use the example from the [Abstract Factory Example](../abstract_factory/README.md). Remember that the [Abstract Factory](../abstract_factory/README.md) requires a concrete factory subclass for each product family (even if the products differ slightly). Let us remove the *BeverageFactory's* and *ToppingFactory's* *ConcreteFactory* subclass and replace it with a *PrototypeFactory*. 
+Let use the example from the [Abstract Factory Example](../abstract_factory/README.md). Remember that the [Abstract Factory](../abstract_factory/README.md) requires a concrete factory subclass for each product family (even if the products differ slightly). Let us remove the `BeverageFactory`'s and `ToppingFactory`'s `ConcreteFactory` subclass and replace it with a `PrototypeFactory`. 
 
 ```java
 
@@ -307,9 +294,9 @@ public class Main {
 
 ### Using a Prototype Manager/Registry
 
-&nbsp;&nbsp;&nbsp;&nbsp;When your system has changing prototypes, instead of handling them individually, you can use a *Prototype Manager*. This manager keeps track of all available prototypes. WHen a client needs a prototype, it asks the manager for it before making a copy.
+When your system has changing prototypes, instead of handling them individually, you can use a `PrototypeManager`. This manager keeps track of all available prototypes. WHen a client needs a prototype, it asks the manager for it before making a copy.
 
-&nbsp;&nbsp;&nbsp;&nbsp;A prototype manager is like a storage system where you can find prototypes based on a key. You can add or remove prototypes from this storage. Client's can interact with this storage during runtime, which helps them expand and check what's available in the system without needing to write extra code.
+A prototype manager is like a storage system where you can find prototypes based on a key. You can add or remove prototypes from this storage. Client's can interact with this storage during runtime, which helps them expand and check what's available in the system without needing to write extra code.
 
 ```java
 // Prototype Manager: PrototypeManger
@@ -344,12 +331,12 @@ class PrototypeManager {
 
 ### Implementing the "clone" method
 
-&nbsp;&nbsp;&nbsp;&nbsp;The hardest part of the Prototype pattern is implementing the Clone operation correctly. It's particular tricky when object structures contain circular references.
+The hardest part of the Prototype pattern is implementing the Clone operation correctly. It's particular tricky when object structures contain circular references.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Most languages provide some support for cloning objects. C++ provides a copy constructor, but these do not solve the "shallow copy" vs "deep copy" problem. That is, does cloning an object in turn clone its instance variables, or do the clone and original just share the variables?
+Most languages provide some support for cloning objects. C++ provides a copy constructor, but these do not solve the "shallow copy" vs "deep copy" problem. That is, does cloning an object in turn clone its instance variables, or do the clone and original just share the variables?
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;A shallow copy is straightforward and usually works fine. In C++, the default copy constructor copies member variables directly, so if you have pointers, they will be shared between the original and the copy. However, when you're cloning prototypes with complex structures, you often need a deep copy. This means the clone and the original must be completely separate. So, you need to make sure that everything inside the clone is also cloned from the original. Cloning makes you decide what, if anything, should be shared.
+A shallow copy is straightforward and usually works fine. In C++, the default copy constructor copies member variables directly, so if you have pointers, they will be shared between the original and the copy. However, when you're cloning prototypes with complex structures, you often need a deep copy. This means the clone and the original must be completely separate. So, you need to make sure that everything inside the clone is also cloned from the original. Cloning makes you decide what, if anything, should be shared.
 
 ```java
 public class Investment implements ProductCloneInterface {
