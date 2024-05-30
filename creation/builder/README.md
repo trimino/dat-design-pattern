@@ -11,32 +11,34 @@ Decouple the construction processes and the construction steps into two separate
 
 ## Applicability
 
-* When you're making a complicated thing, how you put it together shouldn't depend on what exactly it's made of
+* ***Separation of Construction and Assembly***
+  * The process of creating a complex object should be separate from the details of its parts and how they fit together.
 
-* You should be able to build the same thing in different ways, depending on what you need it to do
+* ***Flexible Construction***
+  * The method of building an object should support different versions and configurations of that object.
 
 ## Benefits
 
-&nbsp;&nbsp;&nbsp;&nbsp;The builder pattern hides the nitty-gritty details of how the product is put together. By using an abstract interface, it shields the director from knowing the product's internal structure. Changing how the product is made is easy—you just need to create a new type of builder.
+* ***Flexible Product Representation***
+  * You can change how a product is built without altering its parts.
+  * The Builder provides a way to hide the product's details and assembly process.
+  * To change the product's internal structure, just create a new Builder.
 
-> [!TIP]
-> The builder hides the representation and internal structure of the product from the director.
+* ***Isolated Construction and Representation***
+  * The construction logic is separate from the product's structure.
+  * Clients don't need to know about the product's internal classes.
+  * Each `ConcreteBuilder` has all the code to build a specific product.
+  * The same set of parts can create different products through different Directors.
 
-&nbsp;&nbsp;&nbsp;&nbsp;The builder pattern makes it easier to manage complex objects by keeping their construction details hidden. Clients don't need to worry about how the object is internally structured since this information is hidden by the builder's interface. Each type of *ConcreteBuilder* knows how to put together a specific kind of object. This code is written once and can be reused by different directors to create various versions of the product using the same building blocks.
-
-> [!TIP]
-> Separates the product representation and construction concerns. The builder builds parts and keep the partial product. The director (also called supervisor) controls the construction process.
-
-&nbsp;&nbsp;&nbsp;&nbsp;The builder pattern builds the product gradually, following the director's guidance, instead of creating it all at once like other creational patterns. The director only grabs the product from the builder when it's fully assembled. This approach means the Builder interface reflects the construction process more clearly, giving you precise control over how the product is put together and its internal structure.
-
-> [!TIP]
-> The director can control the construction process at any level of detail.
+* ***Fine Control Over Construction***
+  * The Builder pattern constructs products *step-by-step*, not all at once.
+  * The `Director` controls the construction process and retrieves the product only when it's complete.
+  * This *step-by-step* process allows precise control over how the product is built.
 
 ## Liabilities
-&nbsp;&nbsp;&nbsp;&nbsp;The overall complexity of the code increases since the pattern requires creating multiple new classes.
 
-> [!CAUTION]
-> A few more classes to implement
+* ***Increased Complexity***
+  * Implementing the Builder pattern can add complexity to the codebase due to the additional classes and interfaces involved.
 
 ## UML
 
@@ -331,9 +333,12 @@ class Main {
 
 ## Related Patterns
 
-* *Builder* can build complex objects for *Abstract Factory*. *Abstract Factory* can provide products for *Builder*.
-    * *Abstract Factory* is similar to *Builder* in that it too may construct complex objects. The **primary difference** is that the *Builder* pattern focuses on constructing a complex object **step by step**. *Abstract Factory's* emphasis is on **families of product objects (either simple or complex)**. *Builder* returns the product as a **final step**, but as far as *Abstract Factory* pattern is concerned, the product gets returned immediately.
+* **Abstract Factory**
+  * Builder can build complex objects for Abstract Factory.
+  * Abstract Factory can provide products for Builder.
+  * Abstract Factory and Builder both create complex objects. The key difference is that Builder constructs the object step by step and returns it at the end, while Abstract Factory focuses on families of products and returns the product immediately.
 
-* *Builder* can be used to create the complex *Composite* trees because you can program its construction steps to work recursively.
+* **Composite**
+  * Builder can be used to create the complex Composite trees because you can program its construction steps to work recursively.
 
 * Many designs start by using *Factory Method* (less complicated and more customizable via subclasses) and evolve toward *Abstract Factory*, *Prototype*, or *Builder* (more flexible but more complicated). 
