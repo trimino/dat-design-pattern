@@ -15,24 +15,29 @@ Define a common interface to unify the primitive and composite components so tha
 ## Applicability
 
 * ***Modeling Hierarchical Structures***
-  * You need to model systems where objects contain other objects, representing them as a hierarchy or tree structure
+  * You need to model systems where objects contain other objects, representing them as a hierarchy or tree structure.
 
 * ***Uniform Object Handling***
-  * You want your code to work the same way whether dealing with single objects or groups of objects, allowing clients to interact with all objects n the hierarchy consistently
+  * You want your code to work the same way whether dealing with single objects or groups of objects, allowing clients to interact with all objects n the hierarchy consistently.
 
 ## Benefits
 
-* **Simplifies Object Structures**: Allows creating complex objects from simpler ones, and those complex objects can be used wherever simpler ones are expected
+* ***Simplifies Object Structures***
+  * Allows creating complex objects from simpler ones, and those complex objects can be used wherever simpler ones are expected.
 
-* **Uniform Object Handling**: Clients can interact with both single objects and group objects in the same way, reducing the need for complex conditionals in client code
+* ***Uniform Object Handling***
+  * Clients can interact with both single objects and group objects in the same way, reducing the need for complex conditionals in client code.
 
-* **Effortless Expansion**: Adding new types of objects is straightforward and doesn't require changes to existing code
+* ***Effortless Expansion***
+  * Adding new types of objects is straightforward and doesn't require changes to existing code.
 
 ## Liabilities
 
-* **Limited Type Enforcement**: While it's easy to add new components, ensuring that only specific types of components are used can be difficult, often requiring run-time checks instead of compile time checks\
+* ***Limited Type Enforcement***
+  * While it's easy to add new components, ensuring that only specific types of components are used can be difficult, often requiring run-time checks instead of compile time checks.
 
-* **Client Responsibility for Consistency**: Clients must ensure that the relationships between components are maintained correctly. For example, if a component is removed, the client must also manage and update any related components to maintain the system's integrity
+* ***Client Responsibility for Consistency***
+  * Clients must ensure that the relationships between components are maintained correctly. For example, if a component is removed, the client must also manage and update any related components to maintain the system's integrity.
 
 ## UML
 
@@ -170,14 +175,7 @@ public class Main {
 
 ### Use Parent References
 
-* Why
-  * Having a reference from child components to their parent makes it easier to manage and traverse the composite structure. It also supports patterns like Chain of Responsibility
-
-* Where
-  * Define the parent reference in the `Component` class. Both `Leaf` and `Composite` classes will inherit this reference and the methods to manage it
-
-* How
-  * Always update the parent reference when adding or removing components. This ensures all children have the correct parent. Implement this logic in the `add` and `remove` methods of the `Composite` class to automatically maintain the correct parent references
+Having a reference from child components to their parent makes it easier to manage and traverse the composite structure. It also supports patterns like *Chain of Responsibility*. Define the parent reference in the `Component` class. Both `Leaf` and `Composite` classes will inherit this reference and the methods to manage it. Always update the parent reference when adding or removing components. This ensures all children have the correct parent. Implement this logic in the `add` and `remove` methods of the `Composite` class to automatically maintain the correct parent references
 
 ```java
 public abstract class Component {
@@ -246,14 +244,7 @@ public class Composite extends Component {
 
 ### Sharing Components
 
-* Purpose
-  * Sharing components can save storage space, but it's tricky if a component can only have one parent
-
-* Problem
-  * If you let a component have multiple parents, it can cause confusion when requests move up the structure
-
-* Solution
-  * Use the **Flyweight** pattern to avoid storing parent references. This works when children don't need to send requests to their parents and can keep some or all of their state externally
+Sharing components can save storage space, but it's tricky if a component can only have one parent. If you let a component have multiple parents, it can cause confusion when requests move up the structure. Use the **Flyweight** pattern to avoid storing parent references. This works when children don't need to send requests to their parents and can keep some or all of their state externally.
 
 #### Flyweight Pattern Code Solution
 
@@ -410,8 +401,11 @@ In languages without garbage collection, it's usually best to make a Composite r
 
 ## Related Patterns
 
-* **Abstract Factory and Builder**: Can be used for creating primitive components and constructing complex composites
+* **Abstract Factory and Builder**
+  * Can be used for creating primitive components and constructing complex composites.
 
-* **Flyweight**: Lets you share components, but they can no longer refer to their parents.
+* **Flyweight**
+  * Lets you share components, but they can no longer refer to their parents.
 
-* **Decorator**: Often used with Composite. When decorators and composites are used together, they will usually have a common parent class. So decorators will have to support the Component interface.
+* **Decorator**
+  * Often used with Composite. When decorators and composites are used together, they will usually have a common parent class. So decorators will have to support the Component interface.
