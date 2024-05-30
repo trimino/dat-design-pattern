@@ -14,42 +14,40 @@ Define an object creation interface and let each subclass create one family obje
 
 ## Applicability
 
-* **Decoupling of *Product* creation**
-  * The system can work without needing to know exactly how each product is made or organized
+* ***Decoupling of Product creation***
+  * The system can work without needing to know exactly how each product is made or organized.
 
-* **Configuration with *Product* families**
+* ***Configuration with Product families***
   * The system can be configured to select from various groups of related products, each intended to seamlessly collaborate.
 
-* **Enforcing *Product* Compatibility**
+* ***Enforcing Product Compatibility***
   * The system can ensure related products are used together smoothly, preventing any mix-ups that might cause problems.
 
-* **Abstraction of *Product* Implementations**
+* ***Abstraction of Product Implementations***
   * Shows just the product interfaces, keeping users from dealing with the nitty-gritty of how they're made
 
 ## Benefits
 
-&nbsp;&nbsp;&nbsp;&nbsp;***Isolates concrete classes***, controlling object creation by encapsulating it within factories. Clients interact with instances through abstract interfaces, keeping product class details hidden in factory implementations.
+* ***Isolates Concrete Classes***
+  * Clients work with abstract interfaces rather than specific classes.
+  * Concrete class names are hidden from client code.
+  * Enhances code maintainability and flexibility.
 
-> [!NOTE]
-> Provides a uniform interface for creating different brand of products
+* ***Easy to Exchange Product Families***
+  * Change the factory class once to switch product families.
+  * Simplifies reconfiguration for different product sets.
+  * Example: Switch from `MortgageLoanProcessor` to `AutoLoanProcessor` by changing the factory.
 
-&nbsp;&nbsp;&nbsp;&nbsp;***Encourages product uniformity***. Abstract Factory ensures that product objects within a family are harmoniously designed to collaborate. Maintaining consistency is simplified as the pattern facilitates the strict usage of objects from a single family at any given time.
-
-> [!NOTE]
-> Easy to add new features that can use the *Abstract Factory* interface
-
-&nbsp;&nbsp;&nbsp;&nbsp;***Streamlines product family interchangeability*** by limiting the visibility of the concrete factory class within the application. This enables seamless swapping of factory instances, facilitating effortless transitions between different product configurations. As the abstract factory generates entire product families, switching factories triggers simultaneous adjustments across all product types.
-
-> [!NOTE]
-> A concrete factory can ensure the integrity of the products it creates.
-> The client is unaware of the brands or product of families as well as the concrete families. The client can work with different product families transparently.
+* ***Promotes Product Consistency***
+  * Ensures all products in a family are used together.
+  * Enforces uniform product usage within an application.
 
 ## Liabilities
 
-&nbsp;&nbsp;&nbsp;&nbsp;***Supporting new kinds of products is difficult***. Extending abstract factories to produce new kinds of products isn't easy. That's because the *Abstract Factory* interface fixes the set of products that can be created. Supporting new kinds of products requires extending the factory interface, which involves changing the *Abstract Factory* class and all of its subclasses. The code may be more complicated than it should be, since a lot of new interfaces and classes are introduced along with the pattern.
-
-> [!CAUTION]
-> Difficult to add products or factories that require change to the *Abstract Factory* interface
+* ***Difficult to Support New Products***
+  * Adding new products requires extending the factory interface.
+  * Involves changes to the `AbstractFactory` class and all subclasses.
+  * May introduce complexity with additional interfaces and classes.
 
 ## UML
 
@@ -224,10 +222,10 @@ class CoffeeFactory extends BeverageFactory {
 
 ## Related Patterns
 
-* *Abstract Factory* often uses the *Factory Method*.
-  * The *Abstract Factory* is an abstract class with factory methods; the concrete factories implement the factory methods to the vary the brand of products created.
+* Abstract Factory often uses the Factory Method.
+  * The Abstract Factory is an abstract class with factory methods; the concrete factories implement the factory methods to the vary the brand of products created.
 
-* *Abstract Factory* can use Prototype if the products of different brands **share the same behaviour**.
+* Abstract Factory can use Prototype if the products of different brands **share the same behaviour**.
   * For example, car components of different brands share the same behaviour. Therefore, Prototype can be used to eliminate the product hierarchy.
 
 * Builder can be used to produce complex products for *Abstract Factory*.
