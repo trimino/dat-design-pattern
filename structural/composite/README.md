@@ -18,7 +18,7 @@ Define a common interface to unify the primitive and composite components so tha
   * You need to model systems where objects contain other objects, representing them as a hierarchy or tree structure.
 
 * ***Uniform Object Handling***
-  * You want your code to work the same way whether dealing with single objects or groups of objects, allowing clients to interact with all objects n the hierarchy consistently.
+  * You want your code to work the same way whether dealing with single objects or groups of objects, allowing clients to interact with all objects in the hierarchy consistently.
 
 ## Benefits
 
